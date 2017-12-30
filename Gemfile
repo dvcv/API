@@ -11,6 +11,7 @@
  group :development do
    gem 'sqlite3'
    gem 'web-console', '~> 2.0'
+   gem 'pry-rails'
  end
 
  gem 'sass-rails', '~> 5.0'
@@ -18,8 +19,9 @@
  gem 'coffee-rails', '~> 4.1.0'
  gem 'jquery-rails'
  gem 'turbolinks'
- gem 'bootstrap'
  gem 'figaro'
+ gem 'bootstrap-sass'
+
 
  group :development, :test do
    gem 'byebug'
@@ -27,6 +29,6 @@
    gem 'rspec-rails'
    gem 'shoulda'
    gem 'faker'
-   gem 'factory_girl_rails'
+   gem 'factory_bot_rails'
    gem 'pry-rails'
  end
