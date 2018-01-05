@@ -22,6 +22,7 @@
  gem 'figaro'
  gem 'bootstrap-sass'
  gem 'active_model_serializers', '~> 0.10.0', require: true
+ gem 'responders', '~> 2.0'
 
 
  group :development, :test do
