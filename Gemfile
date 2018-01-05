@@ -21,6 +21,7 @@
  gem 'turbolinks'
  gem 'figaro'
  gem 'bootstrap-sass'
+ gem 'active_model_serializers', '~> 0.10.0', require: true
 
 
  group :development, :test do
@@ -30,5 +31,4 @@
    gem 'shoulda'
    gem 'faker'
    gem 'factory_bot_rails'
-   gem 'pry-rails'
  end
