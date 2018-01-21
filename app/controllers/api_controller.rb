@@ -21,4 +21,10 @@ class ApiController < ActionController::Base
     render json: response.to_json, status: status
   end
 
+  def authenticated?
+    authenticate_or_request_with_http_basic do |username, password|
+      User.find_by(name: username).try(:authenticate, password).present?
+    end
+  end
+
 end

@@ -23,6 +23,8 @@
  gem 'bootstrap-sass'
  gem 'active_model_serializers', '~> 0.10.0', require: true
  gem 'responders', '~> 2.0'
+ # Used for encrypting User passwords
+ gem 'bcrypt'
 
 
  group :development, :test do
