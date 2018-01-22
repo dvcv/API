@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   get 'lists/index'
 
   get 'welcome/index'
-  namespace :api, defaults: { format: :json } do # expect to receive JSON requests
-    resources :users, only: [:index, :new, :create]
-    resources :lists
-    resources :items
+  namespace :api, defaults: { format: :json } do
+    resources :users do
+      resources :lists
+    end
 
+    resources :lists, only: [] do
+      resources :items, only: [:create]
+    end
+
+    resources :items, only: [:destroy]
   end
+
   root 'welcome#index'
 end
