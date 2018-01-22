@@ -8,10 +8,7 @@ class Api::UsersController < ApiController
   end
 
   def create
-    user = User.new
-    user.name = params[:user][:name]
-    user.email = params[:user][:email]
-    user.password = params[:user][:password]
+    user = User.new(user_params)
     if user.save
       render json: user
     else
@@ -24,7 +21,8 @@ class Api::UsersController < ApiController
   def conditions_met
     true # We're not calling this an InsecureUserSerializer for nothing
   end
+
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:name, :password,:email)
   end
 end

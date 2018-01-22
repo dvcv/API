@@ -10,10 +10,8 @@ class Api::ItemsController < ApiController
   end
 
   def create
-    item = Item.new
-    item.title = params[:item][:title]
-    item.list_id = params[:list_id]
-
+    list = List.find(params[:list_id])
+    item = list.items.build(item_params)
     if item.save
       render json: item
     else
@@ -25,5 +23,9 @@ class Api::ItemsController < ApiController
 
   def conditions_met
     true # We're not calling this an InsecureUserSerializer for nothing
+  end
+
+  def item_params
+    params.require(:item).permit(:title)
   end
 end

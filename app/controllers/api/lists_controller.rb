@@ -10,11 +10,8 @@ class Api::ListsController < ApiController
   end
 
   def create
-    list = List.new
-    list.title = params[:list][:title]
-    list.private = params[:list][:private]
-    list.user_id = params[:user_id]
-  
+    user = User.find(params[:user_id])
+    list = user.lists.build(list_params)
     if list.save
       render json: list
     else
@@ -27,5 +24,8 @@ class Api::ListsController < ApiController
 
   def conditions_met
     true # We're not calling this an InsecureUserSerializer for nothing
+  end
+  def list_params
+    params.require(:list).permit(:title, :private)
   end
 end
