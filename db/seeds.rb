@@ -9,3 +9,8 @@
 
 #User.create!(name: 'David', email: "dvcv92@gmail.com", password: "password")
 User.create!(name: 'David', email: "dvcv92@gmail.com", password: "password")
+
+
+List.create!(title: 'food', private: false, user_id: 1)
+
+Item.create!(title: 'apple', list_id: 1)
