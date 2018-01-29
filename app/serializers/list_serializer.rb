@@ -4,8 +4,12 @@ class ListSerializer < ActiveModel::Serializer
   # Delegate the practical definition of `full_name` to
   # the User model, where it belongs, rather than
   # (re)defining it here.
-  def name
-    object.name
+  def title
+    object.title
+  end
+
+  def private
+    object.private
   end
 
   def created_at

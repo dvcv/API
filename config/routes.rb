@@ -9,11 +9,11 @@ Rails.application.routes.draw do
       resources :lists
     end
 
-    resources :lists, only: [] do
-      resources :items, only: [:create]
+    resources :lists, only: [:update] do
+      resources :items, only: [:update]
     end
 
-    resources :items, only: [:destroy]
+    resources :items, only: [:update, :destroy]
   end
 
   root 'welcome#index'
