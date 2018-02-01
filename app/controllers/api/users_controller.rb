@@ -1,6 +1,6 @@
 class Api::UsersController < ApiController
   before_action :authenticated?
-
+  after_action :log_out
   def index
     return permission_denied_error unless conditions_met
     users = User.all
@@ -34,5 +34,9 @@ class Api::UsersController < ApiController
 
   def user_params
     params.require(:user).permit(:name, :password,:email)
+  end
+
+  def log_out
+    destroy_session
   end
 end

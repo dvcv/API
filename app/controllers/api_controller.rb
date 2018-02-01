@@ -21,9 +21,25 @@ class ApiController < ActionController::Base
     render json: response.to_json, status: status
   end
 
+  def current_user
+    current_user ||= session[:current_user_id] &&
+      User.find_by(id: session[:current_user_id])
+  end
+
+  def destroy_session
+    session[:current_user_id] = nil
+  end
+
   def authenticated?
     authenticate_or_request_with_http_basic do |username, password|
-      User.find_by(name: username).try(:authenticate, password).present?
+      user = User.find_by(name: username).try(:authenticate, password)
+      if user.present?
+        #create_session
+        session[:current_user_id] = user.id
+        user.present?
+      else
+        user.present?
+      end
     end
   end
 
