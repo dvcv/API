@@ -1,6 +1,0 @@
-== README
-
-Installation  
-git clone https://github.com/dvcv/API.git
-
-An on going project. Still in development.
